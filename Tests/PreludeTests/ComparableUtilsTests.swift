@@ -3,7 +3,7 @@ import Prelude
 
 class ComparableUtilsTests: XCTestCase {
 	func testClamped() {
-		var value = 25
+		let value = 25
 		
 		XCTAssertEqual(
 			value.clamped(to: 1...10),

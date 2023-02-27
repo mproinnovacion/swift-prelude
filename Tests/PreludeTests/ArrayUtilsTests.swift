@@ -26,6 +26,16 @@ class ArrayUtilsTests: XCTestCase {
 		XCTAssertEqual(values2.upsert(Pair(2, 5), isEqual: { $0.left == $1.left }), [ Pair(1, 1), Pair(2, 5), Pair(3, 3) ])
 	}
 	
+	func testUpsertKeyPath() {
+		let values = [1, 2, 3]
+		
+		XCTAssertEqual(values.upsert(4, keyPath: \.self), [ 1, 2, 3, 4])
+		
+		let values2 = [ Pair(1, 1), Pair(2, 2), Pair(3, 3)]
+		
+		XCTAssertEqual(values2.upsert(Pair(2, 5), keyPath: \.left), [ Pair(1, 1), Pair(2, 5), Pair(3, 3) ])
+	}
+	
 	func testsUpdateValues() {
 		let local = [ Pair(1, "bla"), Pair(2, "blih"), Pair(3, "bluh")]
 		let loaded = [ Pair(1, ""), Pair(2, ""), Pair(3, "")]
