@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Prelude",
+    name: "swift-prelude",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
