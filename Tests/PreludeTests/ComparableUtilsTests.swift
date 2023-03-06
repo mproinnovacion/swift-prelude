@@ -20,4 +20,28 @@ class ComparableUtilsTests: XCTestCase {
 			50
 		)
 	}
+	
+	func testClampedPartiallyClosed() {
+		let value = 25
+		
+		XCTAssertEqual(
+			value.clamped(to: ...10),
+			10
+		)
+		
+		XCTAssertEqual(
+			value.clamped(to: ...100),
+			25
+		)
+		
+		XCTAssertEqual(
+			value.clamped(to: 50...),
+			50
+		)
+
+		XCTAssertEqual(
+			value.clamped(to: 10...),
+			25
+		)
+	}
 }
