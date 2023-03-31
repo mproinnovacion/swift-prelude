@@ -28,7 +28,7 @@ extension Array {
 		copy.insert(item, at: index)
 		return copy
 	}
-  
+	
 	public func upsert<Value: Equatable>(
 		_ item: Element,
 		keyPath: KeyPath<Element, Value>
@@ -45,7 +45,7 @@ extension Array {
 	) -> Array {
 		let matching = self.prefix(local.count)
 		let rest = self.dropFirst(local.count)
-
+		
 		return zip(matching, local).map(update) + rest
 	}
 	
@@ -56,7 +56,7 @@ extension Array {
 	) {
 		let matching = self.prefix(local.count)
 		let rest = self.dropFirst(local.count)
-
+		
 		self = zip(matching, local).map { current, local in
 			var copy = current
 			update(&copy, local)
@@ -92,5 +92,25 @@ extension Array {
 			}
 		}
 		return buffer
+	}
+	
+	public func interspersing(_ element: Element) -> Array {
+		flatMap { [$0, element] }.dropLast()
+	}
+	
+	public func interspersing(_ elements: [Element]) -> Array {
+		guard self.count > 0 else {
+			return self
+		}
+		
+		let shortened = elements.prefix(self.count - 1)
+		
+		let interspersed = zip(self, shortened).flatMap { current, toAdd in
+			[current, toAdd]
+		}
+		
+		let last = self.dropFirst(shortened.count)
+		
+		return Array(interspersed + last)
 	}
 }

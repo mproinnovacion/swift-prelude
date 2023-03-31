@@ -135,6 +135,52 @@ class ArrayUtilsTests: XCTestCase {
 			]
 		)
 	}
+	
+	func testInterspersing() {
+		XCTAssertEqual(
+			[1,3,5].interspersing(2),
+			[1,2,3,2,5]
+		)
+		
+		XCTAssertEqual(
+			[1].interspersing(2),
+			[1]
+		)
+		
+		XCTAssertEqual(
+			[].interspersing(2),
+			[]
+		)
+	}
+	
+	func testInterspersingArray() {
+		XCTAssertEqual(
+			[1,3,5].interspersing([2]),
+			[1,2,3,5]
+		)
+
+		XCTAssertEqual(
+			[1,3,5].interspersing([]),
+			[1,3,5]
+		)
+		
+		XCTAssertEqual(
+			[1,3,5].interspersing([2,4]),
+			[1,2,3,4,5]
+		)
+		
+		XCTAssertEqual(
+			[1,3,5].interspersing([2,4,6,8]),
+			[1,2,3,4,5]
+		)
+		
+		let empty: [Int] = []
+		
+		XCTAssertEqual(
+			empty.interspersing([2,4,6,8]),
+			[]
+		)
+	}
 }
 
 // MARK: Helper Models
