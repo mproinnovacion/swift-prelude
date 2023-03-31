@@ -4,12 +4,11 @@
 
 ---
 
-* [Motivation](#Motivation)
-* [Getting started](#Getting-started)
+* [Getting started](#Getting-Started)
 * [Documentation](#Documentation)
 * [License](#License)
 
-## Learn More
+## Getting Started
 
 To start using the main features of the library make sure to install it on the main project.
 
