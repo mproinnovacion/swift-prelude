@@ -53,3 +53,25 @@ Remove duplicate values in an array of Identifiable elements, where equality is 
 ## removeDuplicates(id:keep:)
 
 Remove duplicate values, specifying how to identify them, and which one we want to keep.
+
+## interspersing(_: Element)
+
+Intersperse the passed element between all elements already in the array.
+
+```
+XCTAssertEqual(
+	[1,3,5].interspersing(2),
+	[1,2,3,2,5]
+)
+```
+
+## interspersing(_: [Element])
+
+Mix the current array with the passed one. If the passed array is longer than the current one the extra elements will be discarded.
+
+```
+XCTAssertEqual(
+	[1,3,5].interspersing([2,4,6,8]),
+	[1,2,3,4,5]
+)
+```
