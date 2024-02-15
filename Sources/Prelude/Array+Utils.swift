@@ -113,4 +113,12 @@ extension Array {
 		
 		return Array(interspersed + last)
 	}
+	
+	/// Sort an array depending ascending boolean value
+	///
+	/// - Parameters:
+	///   - ascending: If value is true, returns self, if value is false returns inverse array
+	public func sorted(ascending: Bool) -> Self {
+		self.sorted(by: { _, _ in ascending })
+	}
 }
